@@ -1,0 +1,47 @@
+[package]
+name = "bear"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+default = [ "oidc" ]
+oidc = [ "dep:oidc", "dep:inth-oauth2" ]
+
+[dependencies]
+# base stuff
+rand = "0.8.5"
+chrono = "0.4"
+anyhow = "1.0"
+thiserror = "1.0"
+num-traits = "0.2"
+hex = "0.4"
+bs58 = "0.4"
+ring = "0.16.20"
+url = "2.3"
+async-trait = "^0.1"
+
+# utilities
+log = "0.4"
+env_logger = "0.9"
+serde = { version = "1.0", features= ["derive"] }
+ansi_term = "0.12"
+strum = "0.24"
+futures-util = "0.3.25"
+metrics = "0.20.1"
+metrics-util = "0.14.0"
+ts-rs = "6.2.1"
+regex = "1.7.0"
+
+# 3rd party
+aws-config = { version = "0.56.1", optional = false }
+aws-sdk-ssm = { version = "0.30.0", optional = false }
+oidc = { version = "0.3.0", optional = true }
+inth-oauth2 = { version = "0.16.0", optional = true }
+
+# web
+sqlx = { version = "0.7.0", features = ["runtime-tokio-rustls", "sqlite", "migrate", "chrono"] }
+tokio = { version = "1.17" , features = ["full"]}
+actix-web = { version = "4",  default-features = false, features = ["compress-brotli", "compress-gzip", "macros", "secure-cookies", "cookies"]  }
+
+http = "0.2.8"
+reqwest = { version = "0.11", default-features = false, features = ["json", "rustls-tls", "multipart"] }
